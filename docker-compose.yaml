@@ -1,0 +1,20 @@
+version: "3"
+services:
+  gestion-salon-coiffure-container2:
+    image: gestion-salon-coiffure2
+    ports:
+      - "5050:8080"
+    networks:
+      - gestion_entreprise_network
+    depends_on:
+      - mysqldb
+  
+  mysqldb:
+    image: mysql:8
+    networks:
+      - gestion_entreprise_network
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=bootdb
+networks:
+  gestion_entreprise_network:
